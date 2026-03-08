@@ -228,4 +228,12 @@ public interface ISysUserService {
      * @return 结果
      */
     List<SysUserVo> selectUserListByDept(Long deptId);
+
+
+    /**
+     * 选项
+     *
+     * @return {@link List }<{@link SysUserVo }>
+     */
+    List<SysUserVo> option();
 }

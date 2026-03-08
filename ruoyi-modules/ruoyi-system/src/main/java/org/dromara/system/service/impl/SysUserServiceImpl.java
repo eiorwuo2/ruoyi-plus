@@ -580,6 +580,23 @@ public class SysUserServiceImpl implements ISysUserService, UserService {
     }
 
     /**
+     * 选项
+     *
+     * @return {@link List }<{@link SysUserVo }>
+     */
+    @Override
+    public List<SysUserVo> option() {
+        // 查询所有正常状态的用户
+        List<SysUser> sysUserList = baseMapper.selectList(Wrappers.<SysUser>lambdaQuery()
+            .eq(SysUser::getStatus, SystemConstants.NORMAL));
+        // 转换成选项列表
+        if (CollUtil.isNotEmpty(sysUserList)) {
+            return BeanUtil.copyToList(sysUserList, SysUserVo.class);
+        }
+        return Collections.emptyList();
+    }
+
+    /**
      * 通过用户ID查询用户账户
      *
      * @param userId 用户ID

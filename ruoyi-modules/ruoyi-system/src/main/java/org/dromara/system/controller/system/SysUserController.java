@@ -66,6 +66,18 @@ public class SysUserController extends BaseController {
         return userService.selectPageUserList(user, pageQuery);
     }
 
+
+    /**
+     * 选项
+     *
+     * @return {@link R }<{@link List }<{@link SysUserVo }>>
+     */
+    @GetMapping("/option")
+    public R<List<SysUserVo>> option() {
+        List<SysUserVo> list = userService.option();
+        return R.ok(list);
+    }
+
     /**
      * 导出用户列表
      */
